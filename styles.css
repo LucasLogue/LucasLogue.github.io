@@ -1,0 +1,45 @@
+/* Top Level */
+:root {
+    --bg-color: #000;
+    --text: #fff;
+    --accent: #00e0ff;
+    --section-padding: 4rem;
+    --font: Arial, sans-serif;
+}
+
+/* Global Vars */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body { 
+    font-family: 'Courier New', Consolas, monospace;
+    background-color: var(--bg-color);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.github-link {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.1s ease;
+  }
+  
+  .github-link:hover {
+    color: var(--accent); /* or whatever your accent is */
+  }
+  
+  .github-icon {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+  }
+
+  .icon-label {
+    font-size: 1rem;
+  }
