@@ -1,3 +1,4 @@
+set clipboard=unnamed
 " --- Core Settings ---
 let mapleader = ","
 
@@ -8,7 +9,7 @@ set updatetime=300
 " restore original comma behavior 
 nnoremap <silent> <leader>, ,
 
-"  send deletes to black hole register 
+"  send deletes to beack hole register 
 nnoremap <silent> d "_d
 
 nnoremap <silent> c "_c
@@ -22,15 +23,23 @@ nnoremap <silent> D "_D
 nnoremap <expr> i getline('.') =~ '^\s*$' ? '"_cc' : 'i'
 " --- Fund Settings ---
 syntax on
-
+filetype plugin indent on
 set number
 set relativenumber
+set cursorline
+set laststatus=2
+set showmatch
+set encoding=utf-8
+" set fileformats=unix,dos
+set hidden
+set confirm
 
+" indent and tab
 set tabstop=4       
 set softtabstop=4
 set shiftwidth=4 
 set expandtab
-
+set cursorline
 set smartindent
 set autoindent  
 set showcmd
@@ -41,14 +50,11 @@ set smartcase
 set termguicolors
 colorscheme elflord 
 
-set guicursor=n-v-c-sm:block-blinkwait0-blinkoff250-blinkon250,i-ci-ve:ver25-blinkwait0-blinkoff250-blinkon250,r-cr-o:hor20-blinkwait0-blinkoff250-blinkon250
-" --- Quality of Life Fixes ---
-
+" set guicursor=n-v-c-sm:block-blinkwait0-blinkoff250-blinkon250,i-ci-ve:ver25-blinkwait0-blinkoff250-blinkon250,r-cr-o:hor20-blinkwait0-blinkoff250-blinkon250
+set guicursor=n-v-c-sm:block-blinkwait0-blinkoff150-blinkon150,i-ci-ve:ver25-blinkwait0-blinkoff150-blinkon150,r-cr-o:hor20-blinkwait0-blinkoff150-blinkon150
+let &t_SI = "\<Esc>[5 q"
+let &t_EI = "\<Esc>[1 q"
+let &t_SR = "\<Esc>[3 q"
 set backspace=indent,eol,start
-
 set scrolloff=8
 set sidescrolloff=8
-
-" vnoremap <silent> <leader>k y:call system('clip.exe', @")<CR>
-" nnoremap <silent> <leader>l :r !powershell.exe -NoProfile -command "Get-Clipboard"<CR>
-EOF
