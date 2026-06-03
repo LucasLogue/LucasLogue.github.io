@@ -1,0 +1,54 @@
+" --- Core Settings ---
+let mapleader = ","
+
+set timeoutlen=500
+set ttimeoutlen=50
+set updatetime=300
+
+" restore original comma behavior 
+nnoremap <silent> <leader>, ,
+
+"  send deletes to black hole register 
+nnoremap <silent> d "_d
+
+nnoremap <silent> c "_c
+
+nnoremap <silent> x "_x
+
+nnoremap <silent> D "_D
+
+
+" auto tab
+nnoremap <expr> i getline('.') =~ '^\s*$' ? '"_cc' : 'i'
+" --- Fund Settings ---
+syntax on
+
+set number
+set relativenumber
+
+set tabstop=4       
+set softtabstop=4
+set shiftwidth=4 
+set expandtab
+
+set smartindent
+set autoindent  
+set showcmd
+set incsearch 
+set hlsearch   
+set ignorecase
+set smartcase 
+set termguicolors
+colorscheme elflord 
+
+set guicursor=n-v-c-sm:block-blinkwait0-blinkoff250-blinkon250,i-ci-ve:ver25-blinkwait0-blinkoff250-blinkon250,r-cr-o:hor20-blinkwait0-blinkoff250-blinkon250
+" --- Quality of Life Fixes ---
+
+set backspace=indent,eol,start
+
+set scrolloff=8
+set sidescrolloff=8
+
+" vnoremap <silent> <leader>k y:call system('clip.exe', @")<CR>
+" nnoremap <silent> <leader>l :r !powershell.exe -NoProfile -command "Get-Clipboard"<CR>
+EOF
