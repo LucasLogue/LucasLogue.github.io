@@ -50,7 +50,6 @@ set smartcase
 set termguicolors
 colorscheme elflord 
 
-" set guicursor=n-v-c-sm:block-blinkwait0-blinkoff250-blinkon250,i-ci-ve:ver25-blinkwait0-blinkoff250-blinkon250,r-cr-o:hor20-blinkwait0-blinkoff250-blinkon250
 set guicursor=n-v-c-sm:block-blinkwait0-blinkoff150-blinkon150,i-ci-ve:ver25-blinkwait0-blinkoff150-blinkon150,r-cr-o:hor20-blinkwait0-blinkoff150-blinkon150
 let &t_SI = "\<Esc>[5 q"
 let &t_EI = "\<Esc>[1 q"
