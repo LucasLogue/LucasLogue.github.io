@@ -1,57 +1,60 @@
-@echo off
-rem Small Draft Script to Copy and Compress RunLogs.
-rem hopefully not actually required...haha ~ llogue
-setlocal enabledelayedexpansion
+set clipboard=unnamed
+" --- Core Settings ---
+let mapleader = ","
 
-rem defining as used in testing
-set "FILENAME=Fundamentals_of_Semiconductors-"
-set "EXT=.pdf"
-rem Required Pathing---------------------------
-set "SOURCE=C:\Users\super\Downloads"
-set "DEST=C:\Users\super\Desktop\compress"
-set "ARCHDEST=%DEST%\archive"
-set "ARCH=%DEST%\archive\archive.zip"
-rem create filelist for later compressing
-set "FILELIST="
+set timeoutlen=500
+set ttimeoutlen=50
+set updatetime=300
 
-rem copy logs into temp destination
-for /L %%N in (0, 1, 10) do (
-    rem No ! and consecutive %'s, causes leak
-    set "TEMPNAME=%FILENAME%%%N%EXT%"
-    if exist "%SOURCE%\!TEMPNAME!" (
-        copy /Y "%SOURCE%\!TEMPNAME!" "%DEST%\!TEMPNAME!"
-        set "FILELIST=!FILELIST! !TEMPNAME!"
-    )
-)
+" restore original comma behavior 
+nnoremap <silent> <leader>, ,
 
-echo Files copied:
-if defined FILELIST (
-    for %%F in (!FILELIST!) do echo %%F
-) else (
-    echo  none
-)
-echo.
+"  send deletes to beack hole register 
+nnoremap <silent> d "_d
 
-rem compress into zip in archive dest
-if defined FILELIST (
-    tar -a -c -f "%ARCH%" -C "%DEST%"!FILELIST!
-    if errorlevel 1 (
-        echo Compression Failed
-    ) else (
-        echo Compression Success: %ARCH%
-    )
-) else (
-    echo No Files to Compress
-)
-echo.
+nnoremap <silent> c "_c
 
-rem delete uncompressed copies
-echo Files cleaned up:
-for /L %%N in (0, 1, 10) do (
-    if exist "%DEST%\%FILENAME%%%N%EXT%" (
-        del /Q "%DEST%\%FILENAME%%%N%EXT%"
-        echo %FILENAME%%%N%EXT%
-    )
-)
+nnoremap <silent> x "_x
 
-endlocal
+nnoremap <silent> D "_D
+
+
+" auto tab
+nnoremap <expr> i getline('.') =~ '^\s*$' ? '"_cc' : 'i'
+" --- Fund Settings ---
+syntax on
+filetype plugin indent on
+set number
+set relativenumber
+set cursorline
+set laststatus=2
+set showmatch
+set encoding=utf-8
+" set fileformats=unix,dos
+set hidden
+set confirm
+
+" indent and tab
+set tabstop=4       
+set softtabstop=4
+set shiftwidth=4 
+set expandtab
+set cursorline
+set smartindent
+set autoindent  
+set showcmd
+set incsearch 
+set hlsearch   
+set ignorecase
+set smartcase 
+set termguicolors
+colorscheme elflord 
+
+" set guicursor=n-v-c-sm:block-blinkwait0-blinkoff250-blinkon250,i-ci-ve:ver25-blinkwait0-blinkoff250-blinkon250,r-cr-o:hor20-blinkwait0-blinkoff250-blinkon250
+set guicursor=n-v-c-sm:block-blinkwait0-blinkoff150-blinkon150,i-ci-ve:ver25-blinkwait0-blinkoff150-blinkon150,r-cr-o:hor20-blinkwait0-blinkoff150-blinkon150
+let &t_SI = "\<Esc>[5 q"
+let &t_EI = "\<Esc>[1 q"
+let &t_SR = "\<Esc>[3 q"
+set backspace=indent,eol,start
+set scrolloff=8
+set sidescrolloff=8
